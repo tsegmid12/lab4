@@ -43,7 +43,7 @@ OS name: "linux", version: "7.0.0-1020-azure", arch: "amd64", family: "unix"
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running mn.edu.must.sqat.GradeCalculatorTest
-[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.190 s -- in mn.edu.must.sqat.GradeCalculatorTest
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s -- in mn.edu.must.sqat.GradeCalculatorTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -52,6 +52,6 @@ OS name: "linux", version: "7.0.0-1020-azure", arch: "amd64", family: "unix"
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  2.294 s
-[INFO] Finished at: 2026-11-23T04:08:01Z
+[INFO] Total time:  1.522 s
+[INFO] Finished at: 2026-11-23T04:08:20Z
 [INFO] ------------------------------------------------------------------------
