@@ -28,7 +28,7 @@ jobs:
         run: |
           set -euo pipefail
           cd lab04-resubmission
-          mkdir -p results
+          mkdir -p ../results
           {
             echo "=== java -version ==="
             java -version 2>&1
@@ -37,7 +37,7 @@ jobs:
             mvn -version 2>&1
             echo
             echo "=== MUTATION: score >= 90.0 changed to score > 90.0 ==="
-          } > results/mvn-test-mutant.txt
+          } > ../results/mvn-test-mutant.txt
           cp src/main/java/mn/edu/must/sqat/GradeCalculator.java /tmp/GradeCalculator.java
           python3 - <<'PY'
           from pathlib import Path
@@ -50,7 +50,7 @@ jobs:
           p.write_text(s.replace(old, new))
           PY
           set +e
-          mvn clean test >> results/mvn-test-mutant.txt 2>&1
+          mvn clean test >> ../results/mvn-test-mutant.txt 2>&1
           mutant_status=$?
           set -e
           cp /tmp/GradeCalculator.java src/main/java/mn/edu/must/sqat/GradeCalculator.java
@@ -69,15 +69,15 @@ jobs:
             mvn -version 2>&1
             echo
             echo "=== FINAL mvn clean test ==="
-          } > results/mvn-test.txt
-          mvn clean test >> results/mvn-test.txt 2>&1
+          } > ../results/mvn-test.txt
+          mvn clean test >> ../results/mvn-test.txt 2>&1
           grep -q "BUILD SUCCESS" results/mvn-test.txt
           python3 - <<'PY'
           from pathlib import Path
           import re
           readme = Path("README.md")
-          pass_log = Path("results/mvn-test.txt").read_text(errors="replace")
-          mutant_log = Path("results/mvn-test-mutant.txt").read_text(errors="replace")
+          pass_log = Path("../results/mvn-test.txt").read_text(errors="replace")
+          mutant_log = Path("../results/mvn-test-mutant.txt").read_text(errors="replace")
           def last_summary(s):
               matches = re.findall(r"Tests run: (\d+), Failures: (\d+), Errors: (\d+), Skipped: (\d+)", s)
               if not matches:
@@ -99,7 +99,7 @@ jobs:
           - Эцсийн тест: **{total}** (Failures: {failures}, Errors: {errors}, Skipped: {skipped})
           - Мутацийн хувилбар (>= 90 → > 90): **BUILD FAILURE**
           - Мутацийн тест: {mutant_total} (Failures: {mutant_failures}, Errors: {mutant_errors}, Skipped: {mutant_skipped})
-          - Бодит командын гаралт: results/mvn-test.txt, results/mvn-test-mutant.txt
+          - Бодит командын гаралт: ../results/mvn-test.txt, ../results/mvn-test-mutant.txt
 
           ## Дүгнэлт
 
@@ -119,7 +119,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add lab04-resubmission/results/mvn-test.txt lab04-resubmission/results/mvn-test-mutant.txt lab04-resubmission/README.md
+          git add results/mvn-test.txt results/mvn-test-mutant.txt README.md
           if ! git diff --cached --quiet; then
             git commit -m "Add verified Maven and mutation test evidence"
             git push
