@@ -75,7 +75,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import re
-          readme = Path("README.md")
+          readme = Path("../README.md")
           pass_log = Path("../results/mvn-test.txt").read_text(errors="replace")
           mutant_log = Path("../results/mvn-test-mutant.txt").read_text(errors="replace")
           def last_summary(s):
