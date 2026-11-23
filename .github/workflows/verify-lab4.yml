@@ -55,11 +55,11 @@ jobs:
           set -e
           cp /tmp/GradeCalculator.java src/main/java/mn/edu/must/sqat/GradeCalculator.java
           if [ "$mutant_status" -eq 0 ]; then
-            echo "ERROR: mutation unexpectedly passed; expected BUILD FAILURE." | tee -a results/mvn-test-mutant.txt
+            echo "ERROR: mutation unexpectedly passed; expected BUILD FAILURE." | tee -a ../results/mvn-test-mutant.txt
             exit 1
           fi
-          grep -q "BUILD FAILURE" results/mvn-test-mutant.txt
-          grep -Eq "Failures: [1-9][0-9]*" results/mvn-test-mutant.txt
+          grep -q "BUILD FAILURE" ../results/mvn-test-mutant.txt
+          grep -Eq "Failures: [1-9][0-9]*" ../results/mvn-test-mutant.txt
           {
             echo "=== FINAL SOURCE RESTORED: score >= 90.0 ==="
             echo "=== java -version ==="
