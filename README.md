@@ -58,7 +58,7 @@ CI нь `GradeCalculator` доторх `score >= 90.0` нөхцөлийг түр
 - Эцсийн тест: **26** (Failures: 0, Errors: 0, Skipped: 0)
 - Мутацийн хувилбар (>= 90 → > 90): **BUILD FAILURE**
 - Мутацийн тест: 26 (Failures: 2, Errors: 0, Skipped: 0)
-- Бодит командын гаралт: ../results/mvn-test.txt, ../results/mvn-test-mutant.txt
+- Бодит командын гаралт: results/mvn-test.txt, results/mvn-test-mutant.txt
 
 ## Дүгнэлт
 
