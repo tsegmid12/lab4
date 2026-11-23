@@ -71,7 +71,7 @@ jobs:
             echo "=== FINAL mvn clean test ==="
           } > ../results/mvn-test.txt
           mvn clean test >> ../results/mvn-test.txt 2>&1
-          grep -q "BUILD SUCCESS" results/mvn-test.txt
+          grep -q "BUILD SUCCESS" ../results/mvn-test.txt
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -99,7 +99,7 @@ jobs:
           - Эцсийн тест: **{total}** (Failures: {failures}, Errors: {errors}, Skipped: {skipped})
           - Мутацийн хувилбар (>= 90 → > 90): **BUILD FAILURE**
           - Мутацийн тест: {mutant_total} (Failures: {mutant_failures}, Errors: {mutant_errors}, Skipped: {mutant_skipped})
-          - Бодит командын гаралт: ../results/mvn-test.txt, ../results/mvn-test-mutant.txt
+          - Бодит командын гаралт: results/mvn-test.txt, results/mvn-test-mutant.txt
 
           ## Дүгнэлт
 
